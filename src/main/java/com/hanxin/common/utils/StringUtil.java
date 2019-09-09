@@ -149,5 +149,18 @@ public class StringUtil {
   }
   
 
+//  (1) 将\n\r替换成一个\n。（2分）
+//  (2) 将\n结尾的这行文本用<p></p>标签包起来。（6分）
+//  (3) 将单个\r字符使用<br/>标签替换。（2分）
+//  (4) 方法不报错，返回正确结果。（4分）
+//  (5) 该方法必须是在自己的工具包工程中，且在StringUtil工具中。（2分）
+
+  public static String toHtml(String text){
+    text = text.replaceAll("\\\\n\\r", "\\\\n");
+    text = text.replaceAll("\\\\n", "<p></p>");
+    text = text.replaceAll("\\\\r", "<br/>");
+    return text;
+  }
+
 
 }
