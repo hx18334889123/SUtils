@@ -111,7 +111,7 @@ public class StringTest_T {
   
   @Test
   public void test10(){
-    String html = StringUtil.toHtml("哈哈\r\nsdsf\nasdsadas \r");
+    String html = StringUtil.toHtml2("哈哈\n\rsdsf\nasdsadas\n\r奥斯卡离婚登记卡时间可缓解客户打手机看领导和健康撒谎离开手机电脑卡拉手机号\n\r");
     System.out.println(html);
   }
   

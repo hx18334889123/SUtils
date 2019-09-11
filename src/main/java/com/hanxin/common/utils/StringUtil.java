@@ -140,27 +140,39 @@ public class StringUtil {
   public static String getPlaceholderValue(String src, String regex) {
     int i = src.lastIndexOf(".");
     int j = src.lastIndexOf("-");
-    String string = src.substring(j+1, i);
-    if(Pattern.matches(regex, string)){
+    String string = src.substring(j + 1, i);
+    if (Pattern.matches(regex, string)) {
       return string;
     }
     return null;
-    
+
   }
-  
 
-//  (1) 将\n\r替换成一个\n。（2分）
-//  (2) 将\n结尾的这行文本用<p></p>标签包起来。（6分）
-//  (3) 将单个\r字符使用<br/>标签替换。（2分）
-//  (4) 方法不报错，返回正确结果。（4分）
-//  (5) 该方法必须是在自己的工具包工程中，且在StringUtil工具中。（2分）
+  //  (1) 将\n\r替换成一个\n。（2分）
+  //  (2) 将\n结尾的这行文本用<p></p>标签包起来。（6分）
+  //  (3) 将单个\r字符使用<br/>标签替换。（2分）
+  //  (4) 方法不报错，返回正确结果。（4分）
+  //  (5) 该方法必须是在自己的工具包工程中，且在StringUtil工具中。（2分）
 
-  public static String toHtml(String text){
-    text = text.replaceAll("\\\\n\\r", "\\\\n");
-    text = text.replaceAll("\\\\n", "<p></p>");
-    text = text.replaceAll("\\\\r", "<br/>");
+  public static String toHtml(String text) {
+    text = "<p>" + text;
+    text = text.replaceAll("\\n\\r", "\\n");
+    text = text.replaceAll("\\r", "<br>");
+    text = text.replaceAll("\\n", "</p><p>");
+    text = text + "</p>";
     return text;
   }
 
+  public static String toHtml2(String text) {
+    text = text.replaceAll("\\n\\r", "\\n");
+    String[] split = text.split("\\n");
+    String str = "";
+    for (String string : split) {
+      str += "<p>" + string + "</p>" + "\n";
+      str = str.replaceAll("\\r", "<br>");
+    }
+
+    return str;
+  }
 
 }
